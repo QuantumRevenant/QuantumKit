@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)  
 and the project uses [Semantic Versioning](https://semver.org/).
 
+## [v1.0.1] - 2025-06-12
+### Fixed
+- 🐛 Fixed embedded resource loading issue by allowing `JsonFromEmbeddedResource` to receive an `Assembly` parameter. This enables loading resources from the main executable.
+- 🔧 Renamed the project folder from `QuantumKit.Tools` to `QuantumKit` for naming consistency.
+
 ## [1.0.0] - 2025-06-11
 
 ### Added
