@@ -4,9 +4,9 @@ namespace QuantumKit.Tools.IO
 {
     public static class JsonUtils
     {
-        public static string JsonFromEmbeddedResource(string embeddedPath)
+        public static string JsonFromEmbeddedResource(string embeddedPath, Assembly sourceAssembly)
         {
-            using Stream? stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(embeddedPath);
+            using Stream? stream = sourceAssembly.GetManifestResourceStream(embeddedPath);
             if (stream == null)
                 throw new InvalidOperationException($"No se encontró el recurso embebido: {embeddedPath}");
 
