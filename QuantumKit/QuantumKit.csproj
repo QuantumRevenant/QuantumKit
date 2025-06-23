@@ -10,4 +10,12 @@
     <PackageReference Include="ClosedXML" Version="0.105.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IO\Resources\" />
+    <Folder Include="Tools\Number\" />
+    <Folder Include="Experimental\" />
+    <Folder Include="UnityTools\" />
+    <Folder Include="Tools\Text\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace QuantumKit.Tools
+﻿namespace QuantumKit.Tools.Number
 {
     public static class MathTextUtils
     {

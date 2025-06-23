@@ -3,7 +3,7 @@
 using ClosedXML.Excel;
 using System.Globalization;
 
-namespace QuantumKit.IO
+namespace QuantumKit.IO.Excel
 {
     public class ExcelBuilder
     {

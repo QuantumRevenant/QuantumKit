@@ -1,15 +1,11 @@
 using QuantumKit.Tools.TextUtils;
 
-namespace QuantumKit.UI
+namespace QuantumKit.UI.CLI
 {
     public static class ConsoleMenuBuilder
     {
-        #region Constants
         private const double ErrorValue = -1;
-        #endregion
 
-
-        #region Option Menus
         public static void ShowAndProcessMenu(
             string title,
             string subtitle,
@@ -95,9 +91,6 @@ namespace QuantumKit.UI
             return choice;
         }
 
-
-        #endregion
-        #region Ask Menus
         public static int AskInt(string question, (double min, double max)? range = null, bool showError = true)
         {
             return (int)AskDouble(question, range, showError);
@@ -262,7 +255,7 @@ namespace QuantumKit.UI
                 // Modificar extensión si es necesario
                 if (!string.IsNullOrEmpty(extension))
                 {
-                    if ((overwriteExtension && endsWithExpectedExt) || (overwriteAnyExtension && hasAnyExt))
+                    if (overwriteExtension && endsWithExpectedExt || overwriteAnyExtension && hasAnyExt)
                     {
                         int lastDot = input.LastIndexOf('.');
                         input = input[..lastDot]; // Remueve última extensión
@@ -324,9 +317,6 @@ namespace QuantumKit.UI
                 return input;
             }
         }
-
-        #endregion
-        #region Pause and Exit
         public static void Pause(string? customMessage = null)
         {
             string message = customMessage ?? "Presiona cualquier tecla para continuar...";
@@ -339,8 +329,6 @@ namespace QuantumKit.UI
             Environment.Exit(0);
         }
 
-        #endregion
-        #region Info Menus
         public static void ShowErrorEmptyMenu() { ShowError("Error de Menú", "No se han definido opciones para este menú."); }
         public static void ShowErrorBadOption() { ShowError("Error de Selección", "La opción seleccionada no fue procesada correctamente."); }
         public static void ShowError(string title = "¡Error!", string subtitle = "Se presentó un error", string? errorCode = null, ConsoleColor? color = null)
@@ -356,7 +344,6 @@ namespace QuantumKit.UI
             if (color != null) { Console.ResetColor(); }
             Console.Clear();
         }
-        #endregion
     }
     public class MenuItem
     {

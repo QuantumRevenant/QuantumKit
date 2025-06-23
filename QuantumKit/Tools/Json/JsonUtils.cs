@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace QuantumKit.Tools.IO
+namespace QuantumKit.Tools.Json
 {
     public static class JsonUtils
     {
