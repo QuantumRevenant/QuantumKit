@@ -2,21 +2,26 @@
 
 All notable changes to this project will be documented in this file.
 
-The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)  
+The format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and the project uses [Semantic Versioning](https://semver.org/).
 
-## [v1.0.2] - 2025-06-23
+## [1.0.2] - 2025-06-23
+
 ### Fixed
+
 - 🐛 Fixed an issue where menu content was cleared after invalid input in `ShowOptions`. The method now retains the full menu and shows error messages without disrupting context.
 
-## [v1.0.1] - 2025-06-12
+## [1.0.1] - 2025-06-12
+
 ### Fixed
+
 - 🐛 Fixed embedded resource loading issue by allowing `JsonFromEmbeddedResource` to receive an `Assembly` parameter. This enables loading resources from the main executable.
 - 🔧 Renamed the project folder from `QuantumKit.Tools` to `QuantumKit` for naming consistency.
 
 ## [1.0.0] - 2025-06-11
 
 ### Added
+
 - Initial implementation of the project.
 - `ConsoleMenuBuilder` for interactive console menus, with:
   - Support for main and submenus.
