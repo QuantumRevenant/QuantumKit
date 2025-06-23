@@ -83,7 +83,9 @@ namespace QuantumKit.UI
 
                 Console.WriteLine($"0) {exitOrReturnTextOverride ?? (returnInsteadOfExit ? "Volver" : "Salir")}");
 
-                choice = AskInt("Selecciona una opción: ", (0, options.Length), showError);
+                choice = AskInt("Selecciona una opción: ", (0, options.Length), false);
+
+                if (choice == ErrorValue && showError) ShowError("Entrada inválida", $"Debe ser un número válido entre {0} y {options.Length}");
 
             } while (choice == ErrorValue && showError);
 
@@ -138,11 +140,11 @@ namespace QuantumKit.UI
             string first = defaultIfInvalid && defaultFirst ? trueKey.ToString().ToUpper() : trueKey.ToString().ToLower();
             string second = defaultIfInvalid && defaultFirst ? falseKey.ToString().ToLower() : falseKey.ToString().ToUpper();
 
-            return AskBinaryOption(question:question,
-                                    trueLabel:first, falseLabel:second,
-                                    showError:showError,
-                                    defaultIfInvalid:defaultIfInvalid,
-                                    defaultFirst:defaultFirst);
+            return AskBinaryOption(question: question,
+                                    trueLabel: first, falseLabel: second,
+                                    showError: showError,
+                                    defaultIfInvalid: defaultIfInvalid,
+                                    defaultFirst: defaultFirst);
         }
         public static bool AskBinaryOption(
             string question,
@@ -170,7 +172,7 @@ namespace QuantumKit.UI
             if (defaultFirst && !defaultIfInvalid)
                 (firstOption, secondOption) = (falseLabel, trueLabel);
 
-            string optionsDisplay =$"({firstOption}/{secondOption})";
+            string optionsDisplay = $"({firstOption}/{secondOption})";
 
             while (true)
             {
