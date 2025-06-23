@@ -4,12 +4,8 @@ namespace QuantumKit.UI
 {
     public static class ConsoleMenuBuilder
     {
-        #region Constants
         private const double ErrorValue = -1;
-        #endregion
 
-
-        #region Option Menus
         public static void ShowAndProcessMenu(
             string title,
             string subtitle,
@@ -87,7 +83,9 @@ namespace QuantumKit.UI
 
                 Console.WriteLine($"0) {exitOrReturnTextOverride ?? (returnInsteadOfExit ? "Volver" : "Salir")}");
 
-                choice = AskInt("Selecciona una opción: ", (0, options.Length), showError);
+                choice = AskInt("Selecciona una opción: ", (0, options.Length), false);
+
+                if (choice == ErrorValue && showError) ShowError("Entrada inválida", $"Debe ser un número válido entre {0} y {options.Length}");
 
             } while (choice == ErrorValue && showError);
 
@@ -96,8 +94,6 @@ namespace QuantumKit.UI
         }
 
 
-        #endregion
-        #region Ask Menus
         public static int AskInt(string question, (double min, double max)? range = null, bool showError = true)
         {
             return (int)AskDouble(question, range, showError);
@@ -144,11 +140,11 @@ namespace QuantumKit.UI
             string first = defaultIfInvalid && defaultFirst ? trueKey.ToString().ToUpper() : trueKey.ToString().ToLower();
             string second = defaultIfInvalid && defaultFirst ? falseKey.ToString().ToLower() : falseKey.ToString().ToUpper();
 
-            return AskBinaryOption(question:question,
-                                    trueLabel:first, falseLabel:second,
-                                    showError:showError,
-                                    defaultIfInvalid:defaultIfInvalid,
-                                    defaultFirst:defaultFirst);
+            return AskBinaryOption(question: question,
+                                    trueLabel: first, falseLabel: second,
+                                    showError: showError,
+                                    defaultIfInvalid: defaultIfInvalid,
+                                    defaultFirst: defaultFirst);
         }
         public static bool AskBinaryOption(
             string question,
@@ -176,7 +172,7 @@ namespace QuantumKit.UI
             if (defaultFirst && !defaultIfInvalid)
                 (firstOption, secondOption) = (falseLabel, trueLabel);
 
-            string optionsDisplay =$"({firstOption}/{secondOption})";
+            string optionsDisplay = $"({firstOption}/{secondOption})";
 
             while (true)
             {
@@ -325,8 +321,6 @@ namespace QuantumKit.UI
             }
         }
 
-        #endregion
-        #region Pause and Exit
         public static void Pause(string? customMessage = null)
         {
             string message = customMessage ?? "Presiona cualquier tecla para continuar...";
@@ -339,8 +333,6 @@ namespace QuantumKit.UI
             Environment.Exit(0);
         }
 
-        #endregion
-        #region Info Menus
         public static void ShowErrorEmptyMenu() { ShowError("Error de Menú", "No se han definido opciones para este menú."); }
         public static void ShowErrorBadOption() { ShowError("Error de Selección", "La opción seleccionada no fue procesada correctamente."); }
         public static void ShowError(string title = "¡Error!", string subtitle = "Se presentó un error", string? errorCode = null, ConsoleColor? color = null)
@@ -356,7 +348,6 @@ namespace QuantumKit.UI
             if (color != null) { Console.ResetColor(); }
             Console.Clear();
         }
-        #endregion
     }
     public class MenuItem
     {
